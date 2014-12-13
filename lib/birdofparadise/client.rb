@@ -11,23 +11,30 @@ module Birdofparadise
     end
 
     def info(package)
-      package_url = REGISTRY_URL + "/#{package}"
-      details = HTTParty.get(package_url).parsed_response
+      details = get_details package
       resolver = Birdofparadise::Client::Resolver.new(details['name'], details['url'])
       resolver.info
     end
 
     def versions(package)
-      package_url = REGISTRY_URL + "/#{package}"
-      details = HTTParty.get(package_url).parsed_response
+      details = get_details package
       resolver = Birdofparadise::Client::Resolver.new(details['name'], details['url'])
       resolver.versions
+    end
+
+    def lookup(package)
+      get_details package
     end
 
     private
 
     def get_index
       @index ||= HTTParty.get(REGISTRY_URL).parsed_response
+    end
+
+    def get_details(package)
+      package_url = REGISTRY_URL + "/#{package}"
+      HTTParty.get(package_url).parsed_response
     end
   end
 end

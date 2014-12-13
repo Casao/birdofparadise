@@ -19,5 +19,11 @@ module Birdofparadise
         puts "\t- #{version}"
       end
     end
+
+    def lookup(package)
+      @client ||= Birdofparadise::Client.new
+      results = @client.lookup package
+      puts "#{results['name']} #{results['url']}"
+    end
   end
 end

@@ -4,7 +4,7 @@ require 'slop'
 
 opts = Slop.parse do
   command 'search' do
-    description "Search for a package"
+    description 'Search for a package by name'
 
     run do |opts, args|
       client = Birdofparadise::CLI.new
@@ -13,12 +13,22 @@ opts = Slop.parse do
       client.search args[0]
     end
   end
+
   command 'info' do
-    description "Info on a package"
+    description 'Info of a particular package'
 
     run do |opts, args|
       client = Birdofparadise::CLI.new
       client.info args[0]
+    end
+  end
+
+  command 'lookup' do
+    description 'Look up a package URL by name'
+
+    run do |opts, args|
+      client = Birdofparadise::CLI.new
+      client.lookup args[0]
     end
   end
 end
