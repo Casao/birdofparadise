@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+require_relative '../lib/birdofparadise/cli'
+require 'slop'
+
+opts = Slop.parse do
+  command 'search' do
+    description "Search for a package"
+
+    run do |opts, args|
+      client = Birdofparadise::CLI.new
+      puts "Search Results:"
+      puts "\n"
+      client.search args[0]
+    end
+  end
+end
