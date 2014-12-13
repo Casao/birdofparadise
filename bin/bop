@@ -13,4 +13,12 @@ opts = Slop.parse do
       client.search args[0]
     end
   end
+  command 'info' do
+    description "Info on a package"
+
+    run do |opts, args|
+      client = Birdofparadise::CLI.new
+      client.info args[0]
+    end
+  end
 end

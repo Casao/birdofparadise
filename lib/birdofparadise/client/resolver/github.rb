@@ -16,7 +16,9 @@ module Birdofparadise
         def info ref=nil
           options = {path: 'bower.json', headers: { accept: 'application/vnd.github.VERSION.raw'}}
           options[:ref] = ref unless ref.nil?
-          JSON.parse(@client.contents(@repo, options))
+          results = JSON.parse(@client.contents(@repo, options))
+          results['homepage'] ||= "http://github.com/#{@repo}"
+          results
         end
 
         def download ref=nil

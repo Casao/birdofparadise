@@ -8,5 +8,16 @@ module Birdofparadise
         puts "\t#{result["name"]} #{result["url"]}"
       end
     end
+
+    def info(package)
+      @client ||= Birdofparadise::Client.new
+      results = @client.info package
+      versions = @client.versions package
+      puts JSON.pretty_generate(results)
+      puts "\nAvailable versions:"
+      versions.each do |version|
+        puts "\t- #{version}"
+      end
+    end
   end
 end
