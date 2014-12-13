@@ -1,5 +1,6 @@
 require 'octokit'
 require 'json'
+require 'httparty'
 
 module Birdofparadise
   module Client
@@ -17,8 +18,13 @@ module Birdofparadise
           JSON.parse(@client.contents(@repo, options))
         end
 
-        def install ref=nil
-
+        def download ref=nil
+          options = {}
+          options[:ref] = ref unless ref.nil?
+          url = Octokit.archive_link(@repo, options)
+          File.open("#{@repo.gsub(/\//, '_')}.tgz", "wb") do |f|
+            f.write HTTParty.get(url).parsed_response
+          end
         end
 
         def versions
