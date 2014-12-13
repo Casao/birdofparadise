@@ -33,6 +33,10 @@ module Birdofparadise
         file
       end
 
+      def dependencies
+        Array(info['dependencies'])
+      end
+
       private
 
       def cache_key(version=nil)

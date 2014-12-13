@@ -1,7 +1,4 @@
-require 'tempfile'
-require 'minigit'
-
 module Birdofparadise
-    class Client
-    end
+  class Client
+  end
 end
