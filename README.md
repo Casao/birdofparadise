@@ -1,6 +1,5 @@
-# Birdofparadise
-
-TODO: Write a gem description
+# Bird of Paradise
+A reimplementation of Bower in pure Ruby
 
 ## Installation
 
