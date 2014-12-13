@@ -1,5 +1,6 @@
 require_relative 'client/resolver'
 require 'httparty'
+
 module Birdofparadise
   class Client
     REGISTRY_URL = "http://bower.herokuapp.com/packages"

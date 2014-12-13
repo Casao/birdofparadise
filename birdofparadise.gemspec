@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Birdofparadise::VERSION
   spec.authors       = ["Colin Ewen"]
   spec.email         = ["colin@draecas.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{A reimplementation of Bower in pure Ruby}
+  spec.description   = %q{A reimplementation of Bower in pure Ruby}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -25,5 +25,4 @@ Gem::Specification.new do |spec|
   spec.add_dependency "octokit"
   spec.add_dependency "httparty"
   spec.add_dependency "disk_store"
-
 end
