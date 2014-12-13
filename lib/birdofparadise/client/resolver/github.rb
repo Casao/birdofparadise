@@ -1,10 +1,11 @@
 require 'octokit'
 require 'json'
 require 'httparty'
+require 'tempfile'
 
 module Birdofparadise
-  module Client
-    module Resolver
+  class Client
+    class Resolver
       class Github
         
         def initialize(repo)
@@ -22,9 +23,9 @@ module Birdofparadise
           options = {}
           options[:ref] = ref unless ref.nil?
           url = Octokit.archive_link(@repo, options)
-          File.open("#{@repo.gsub(/\//, '_')}.tgz", "wb") do |f|
-            f.write HTTParty.get(url).parsed_response
-          end
+          temp = Tempfile.new(@repo.gsub(/\//, '_'))
+          temp.write(HTTParty.get(url).parsed_response)
+          temp
         end
 
         def versions

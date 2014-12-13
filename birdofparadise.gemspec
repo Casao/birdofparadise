@@ -24,5 +24,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "octokit"
   spec.add_dependency "httparty"
+  spec.add_dependency "disk_store"
 
 end
